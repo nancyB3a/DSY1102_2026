@@ -1,0 +1,14 @@
+[
+  {
+    "costoCursoUsd": 1500.0,
+    "codigoReserva": "QQQ11",
+    "destino": "ESPAÑA",
+    "semanas": 2
+  },
+  {
+    "costoCursoUsd": 5000.0,
+    "codigoReserva": "TOTO33",
+    "destino": "PUNTA CANA",
+    "semanas": 3
+  }
+]
