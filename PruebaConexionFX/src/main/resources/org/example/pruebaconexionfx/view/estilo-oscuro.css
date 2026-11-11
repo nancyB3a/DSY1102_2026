@@ -1,0 +1,46 @@
+/* Mismo tema oscuro que usará GestorClientesFX */
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", "DejaVu Sans", sans-serif;
+    -fx-font-size: 13px;
+}
+.raiz {
+    -fx-background-color: #1e1f22;
+}
+.label {
+    -fx-text-fill: #dfe1e5;
+}
+.titulo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+.subtitulo, .etiqueta, .detalle {
+    -fx-text-fill: #9da0a8;
+}
+.panel {
+    -fx-background-color: #2b2d30;
+    -fx-background-radius: 8;
+    -fx-border-color: #43454a;
+    -fx-border-radius: 8;
+    -fx-padding: 16;
+}
+.estado {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.estado-ok {
+    -fx-text-fill: #4caf6e;
+}
+.estado-error {
+    -fx-text-fill: #e06c6c;
+}
+.boton-primario {
+    -fx-background-color: #3574f0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+    -fx-cursor: hand;
+}
+.boton-primario:hover {
+    -fx-background-color: #4682fa;
+}
