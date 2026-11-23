@@ -1,0 +1,174 @@
+/* =====================================================================
+   GestorClientesFX - Tema oscuro
+   ===================================================================== */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", "DejaVu Sans", sans-serif;
+    -fx-font-size: 13px;
+    -color-fondo: #1e1f22;
+    -color-panel: #2b2d30;
+    -color-borde: #43454a;
+    -color-texto: #dfe1e5;
+    -color-texto-suave: #9da0a8;
+    -color-acento: #3574f0;
+    -color-peligro: #c94f4f;
+    -fx-base: #2b2d30;
+    -fx-background: #1e1f22;
+    -fx-control-inner-background: #26282b;
+    -fx-text-base-color: #dfe1e5;
+    -fx-accent: #3574f0;
+    -fx-focus-color: #3574f0;
+    -fx-faint-focus-color: transparent;
+}
+
+.raiz {
+    -fx-background-color: -color-fondo;
+}
+
+/* --- Encabezado --- */
+.encabezado {
+    -fx-padding: 18 20 14 20;
+    -fx-spacing: 2;
+}
+.titulo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-texto;
+}
+.subtitulo {
+    -fx-text-fill: -color-texto-suave;
+}
+
+/* --- Textos generales --- */
+.label {
+    -fx-text-fill: -color-texto;
+}
+
+/* --- Formulario --- */
+.panel-formulario {
+    -fx-background-color: -color-panel;
+    -fx-background-radius: 8;
+    -fx-border-color: -color-borde;
+    -fx-border-radius: 8;
+    -fx-padding: 16;
+}
+.titulo-panel {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+.ayuda {
+    -fx-text-fill: -color-texto-suave;
+    -fx-font-size: 12px;
+}
+.text-field {
+    -fx-background-color: #1e1f22;
+    -fx-border-color: -color-borde;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: -color-texto;
+    -fx-prompt-text-fill: #6f737a;
+    -fx-padding: 6 8;
+}
+.text-field:focused {
+    -fx-border-color: -color-acento;
+}
+.campo-id {
+    -fx-opacity: 0.75;
+}
+
+/* --- Botones --- */
+.button {
+    -fx-background-color: #393b40;
+    -fx-text-fill: -color-texto;
+    -fx-background-radius: 5;
+    -fx-padding: 7 12;
+    -fx-cursor: hand;
+}
+.button:hover {
+    -fx-background-color: #45484e;
+}
+.boton-primario {
+    -fx-background-color: -color-acento;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.boton-primario:hover {
+    -fx-background-color: #4682fa;
+}
+.boton-peligro {
+    -fx-background-color: -color-peligro;
+    -fx-text-fill: white;
+}
+.boton-peligro:hover {
+    -fx-background-color: #d96060;
+}
+.button:disabled {
+    -fx-opacity: 0.4;
+}
+
+/* --- Tabla --- */
+.table-view {
+    -fx-background-color: -color-panel;
+    -fx-border-color: -color-borde;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 4;
+}
+.table-view .column-header-background {
+    -fx-background-color: -color-panel;
+}
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: -color-panel;
+    -fx-border-color: transparent transparent -color-borde transparent;
+    -fx-size: 34;
+}
+.table-view .column-header .label {
+    -fx-text-fill: -color-texto-suave;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 10;
+}
+.table-row-cell {
+    -fx-background-color: -color-panel;
+    -fx-cell-size: 32;
+}
+.table-row-cell:odd {
+    -fx-background-color: #2f3135;
+}
+.table-row-cell:selected {
+    -fx-background-color: #2e436e;
+}
+.table-cell {
+    -fx-text-fill: -color-texto;
+    -fx-border-color: transparent;
+    -fx-padding: 0 10;
+    -fx-alignment: CENTER_LEFT;
+}
+.table-view .col-id {
+    -fx-alignment: CENTER;
+}
+.table-view .placeholder .label {
+    -fx-text-fill: -color-texto-suave;
+}
+
+/* --- Barra de estado --- */
+.barra-estado {
+    -fx-padding: 12 20;
+}
+.barra-estado .label {
+    -fx-text-fill: -color-texto-suave;
+}
+
+/* --- Alertas (el controlador les aplica esta misma hoja) --- */
+.dialog-pane {
+    -fx-background-color: -color-panel;
+    -fx-border-color: #5a5d63;
+    -fx-border-width: 1;
+}
+.dialog-pane .content.label {
+    -fx-text-fill: -color-texto;
+}
+.dialog-pane > .button-bar > .container {
+    -fx-background-color: -color-panel;
+}
