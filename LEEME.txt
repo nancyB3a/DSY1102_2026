@@ -1,0 +1,89 @@
+CINEESTRELLA - PROYECTO BASE EP3
+================================
+
+Ejecución: clase cl.duoc.cineestrella.Launcher (o mvn javafx:run).
+Mientras no asignes tu implementación de PeliculaDAO, la ventana se abre
+y el área de mensajes indica que aún no hay una implementación asignada.
+
+
+ESTRUCTURA
+----------
+cl.duoc.cineestrella
+  Launcher, App              Inicio de la aplicación (no modificar).
+  model/                     Pelicula, TodoEspectador, Adulto, Promocionable
+                             (no modificar).
+  dao/                       PeliculaDAO y PersistenciaException (no modificar).
+  conexion/ConexionBD        Datos de conexión: COMPLETAR.
+  controller/MainController  Controlador de la ventana: asignar el DAO
+                             (marca "EP3"); no modificar el resto.
+resources/cl/duoc/cineestrella/view
+  main-view.fxml             Ventana principal (no modificar).
+pom.xml                      Agregar el conector JDBC (marca "EP3").
+scripts/                     cineestrella_mysql.sql y cineestrella_oracle.sql:
+                             ejecuta el de tu motor (no modificar).
+
+
+BASE DE DATOS
+-------------
+tipo_calificacion (catálogo)
+  id_calificacion  1 = Todo Espectador, 2 = Adulto
+  descripcion
+
+pelicula
+  id               generado por la base de datos
+  id_calificacion  clave foránea de tipo_calificacion (1 o 2)
+  formato, titulo, duracion             comunes a todas las películas
+  idioma, en_promocion                  solo Todo Espectador (NULL en Adulto)
+  trasnoche                             solo Adulto (NULL en Todo Espectador)
+
+  Relación uno a muchos (1:N): una calificación puede estar en muchas
+  películas; cada película tiene una sola calificación.
+
+
+MODELO
+------
+Pelicula (abstracta)
+  int getId() / void setId(int id)          0 mientras no está almacenada.
+  String getFormato() / setFormato(String)  "2D" o "3D".
+  String getTitulo() / setTitulo(String)    No nulo ni vacío.
+  int getDuracion() / setDuracion(int)      Entre 60 y 240 minutos.
+  String getCalificacion()                  "Todo Espectador" o "Adulto".
+  double calcularPrecioEntrada()            Precio de la entrada, en pesos.
+  Precio base según formato: 2D $5.500, 3D $7.500.
+  Los set lanzan IllegalArgumentException con un mensaje si el dato es inválido.
+
+TodoEspectador extends Pelicula implements Promocionable
+  TodoEspectador(String formato, String titulo, int duracion,
+                 String idioma, boolean enPromocion)
+  String getIdioma() / setIdioma(String)    No nulo ni vacío.
+  boolean isEnPromocion() / setEnPromocion(boolean)
+  Precio: precio base; -20% si está en promoción familiar.
+
+Adulto extends Pelicula
+  Adulto(String formato, String titulo, int duracion, boolean trasnoche)
+  boolean isTrasnoche() / setTrasnoche(boolean)
+  Precio: precio base; -15% si es función trasnoche.
+
+Promocionable (interfaz)
+  boolean isEnPromocion()
+  void setEnPromocion(boolean)
+
+
+ACCESO A DATOS
+--------------
+PeliculaDAO (interfaz)
+  List<Pelicula> obtenerTodos()  Todas las películas, cada una como TodoEspectador
+                                 o Adulto, con todos sus datos y su id.
+  void insertar(Pelicula p)      Guarda una película nueva (el id lo genera la BD).
+  void actualizar(Pelicula p)    Modifica la película con el mismo id.
+  void eliminar(int id)          Elimina la película con ese id.
+  Todas lanzan PersistenciaException si la operación no puede completarse.
+
+PersistenciaException(String mensaje)
+PersistenciaException(String mensaje, Throwable causa)
+  La ventana muestra getMessage() en el área de mensajes.
+
+ConexionBD
+  static Connection getConnection() throws SQLException
+  Entrega una conexión abierta con los datos URL, USUARIO y CLAVE.
+  Quien la utiliza debe cerrarla.
